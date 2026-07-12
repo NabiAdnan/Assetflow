@@ -31,6 +31,18 @@ from app.routers import allocation
 
 app.include_router(allocation.router)
 
+from app.routers import transfer
+
+app.include_router(transfer.router)
+
+from app.routers import booking
+
+app.include_router(booking.router)
+
+from app.routers import maintenance
+
+app.include_router(maintenance.router)
+
 @app.get("/")
 def root():
     return {"message":"AssetFlow Backend Running 🚀"}
