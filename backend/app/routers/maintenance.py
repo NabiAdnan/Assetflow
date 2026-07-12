@@ -147,3 +147,8 @@ def complete_request(
     return {
         "message": "Maintenance completed"
     }
+
+
+@router.get("/", response_model=list[MaintenanceResponse])
+def get_maintenance_requests(db: Session = Depends(get_db)):
+    return db.query(Maintenance).all()

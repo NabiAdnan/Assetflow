@@ -15,6 +15,8 @@ class MaintenanceResponse(BaseModel):
     issue: str
     technician: str | None
     status: str
+    reported_date: date | None = None
+    completed_date: date | None = None
 
     class Config:
         from_attributes = True
