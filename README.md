@@ -1,5 +1,7 @@
 # Assetflow
 
+Live demo: https://assetflow-lilac.vercel.app/auth/login
+
 Assetflow is an asset management web application with a Python FastAPI backend
 and a React/TypeScript frontend (`resource-flow-core`). This repository contains
 both services and configuration for local development and deployment.
