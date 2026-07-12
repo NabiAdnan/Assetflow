@@ -82,3 +82,5 @@ tmp/
 # =========================
 *.swp
 *.swo
+# Ignore nested repo backups
+/frontend/resource-flow-core/.git_backup_resource-flow-core/
