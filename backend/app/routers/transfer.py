@@ -7,6 +7,8 @@ from app.database.database import get_db
 from app.models.asset import Asset
 from app.models.transfer import Transfer
 from app.schemas.transfer import *
+from app.models.notification import Notification
+from app.models.audit import Audit
 
 router = APIRouter(
     prefix="/transfer",
@@ -70,6 +72,22 @@ def approve_transfer(
     asset.holder_id = transfer.to_employee
 
     transfer.status = "Approved"
+    db.add(
+    Notification(
+        title="Transfer Approved",
+        message=f"Asset {asset.asset_tag} transferred successfully."
+    )
+    )
+
+
+
+    db.add(
+    Audit(
+        action="Transfer",
+        entity="Asset",
+        description=f"{asset.asset_tag} transferred to employee {transfer.to_employee}"
+    )
+)
 
     db.commit()
 

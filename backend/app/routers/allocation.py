@@ -48,6 +48,14 @@ def allocate_asset(
     asset.holder_id = allocation.employee_id
 
     db.add(new_allocation)
+    from app.models.audit import Audit
+    db.add(
+    Audit(
+        action="Allocate",
+        entity="Asset",
+        description=f"{asset.asset_tag} allocated to employee {allocation.employee_id}"
+    )
+    )
 
     db.commit()
 

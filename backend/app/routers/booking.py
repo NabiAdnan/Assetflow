@@ -7,6 +7,8 @@ from app.models.booking import Booking
 from app.models.asset import Asset
 
 from app.schemas.booking import *
+from app.models.notification import Notification
+from app.models.audit import Audit
 
 
 router = APIRouter(
@@ -54,10 +56,25 @@ def create_booking(
     new_booking = Booking(**booking.model_dump())
 
     db.add(new_booking)
+    db.add(
+    Notification(
+        title="Booking Confirmed",
+        message=f"{resource.name} booked successfully."
+    )
+    )
+
+    db.add(
+    Audit(
+        action="Booking",
+        entity="Resource",
+        description=f"{resource.name} booked"
+    )
+)
 
     db.commit()
 
     db.refresh(new_booking)
+    
 
     return new_booking
 

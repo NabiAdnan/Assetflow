@@ -43,6 +43,23 @@ from app.routers import maintenance
 
 app.include_router(maintenance.router)
 
+from app.routers import dashboard
+
+app.include_router(dashboard.router)
+
+
+
+from app.routers import notifications
+app.include_router(notifications.router)
+
+from app.routers import reports
+
+app.include_router(reports.router)
+
+from app.routers import audit
+
+app.include_router(audit.router)
+
 @app.get("/")
 def root():
     return {"message":"AssetFlow Backend Running 🚀"}

@@ -11,5 +11,7 @@ from app.models.allocation import Allocation
 from app.models.transfer import Transfer
 from app.models.booking import Booking
 from app.models.maintenance import Maintenance
+from app.models.notification import Notification
+from app.models.audit import Audit
 def init_db():
     Base.metadata.create_all(bind=engine)
